@@ -1,46 +1,36 @@
 #include "holberton.h"
 
-int _chk_nw_ln(const char *s)
-{
-	int cnt = 0;
-	char c = 92;
-
-	while(*(s + cnt) != '\0')
-	{
-		if (*(s + cnt) == c && *(s + (cnt + 1)) == 'n')
-		{
-			_putc(10);
-		}
-		cnt++;
-	}
-	return (cnt);
-}
-
 int _chk_str(char s, va_list _param)
 {
 	char *ss, sc;
-	int i, x;
+	int i, x, y, cnt = 0;
 
 	switch (s)
 	{
 		case 's':
 		ss = va_arg(_param, char *);
-		_wrt_c(ss);
+		cnt = cnt + _putss(ss);
 		break;
 		case 'c':
 		sc = va_arg(_param, int);
 		_putc(sc);
+		cnt++;
 		break;
 		case 'd':
 		i = va_arg(_param, int);
-		_chk_int(i);
+		cnt = cnt + _chk_int(i);;
 		break;
 		case 'i':
 		x = va_arg(_param, int);
-		_chk_int(x);
+		cnt = cnt + _chk_int(x);
+		break;
+		case '%':
+		y = va_arg(_param, int);
+		cnt = cnt + _chk_int(y) + 1;
+		_putc('%');
 		break;
 	}
-	return 0;
+	return cnt;
 }
 
 int _chk_int(int i)
@@ -79,7 +69,7 @@ int _chk_int(int i)
 			}
 		}
 	}
-	return (x);
+	return (_int_len(i));
 }
 
 int _int_len(int i)

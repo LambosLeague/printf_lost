@@ -29,3 +29,16 @@ int _wrt_c(char *ss)
 	write(1, ss, _strlen(ss));
 	return (_strlen(ss));
 }
+
+int _putss(char *s)
+{
+	int i = 0;
+
+	while(*s != '\0')
+	{
+		_putc(*s);
+		i++;
+		s++;
+	}
+	return (i);
+}

@@ -11,5 +11,6 @@ int _wrt_c(char *ss);
 int _chk_int(int i);
 int _int_len(int i);
 int _int_sqr(int x, int y);
+int _putss(char *s);
 
 #endif /*HOLBERTON_H*/
