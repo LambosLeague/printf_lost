@@ -6,6 +6,31 @@
  * @s: accept user input
  * Return: always return legnth counted
  */
+int _chk_nw_ln1(const char *s)
+{
+	int cnt = 0, m_cnt = 0;
+	char c = 0, cc = 10;
+
+	while (*s++)
+	{	if((*(s + cnt) == c) && (*(s + (cnt - 1)) != cc))
+		{
+			m_cnt++;
+			cnt++;
+			break;
+		}
+		if((*(s + cnt) == cc) && (*(s + (cnt + 1)) != c))
+		{
+			m_cnt = 0;
+			cnt++;
+		}
+		if((*(s + cnt) == cc) && (*(s + (cnt + 1)) == c))
+		{
+			m_cnt += 1;
+			break;
+		}
+	}
+	return (m_cnt);
+}
 
 int _strlen(char *s)
 {
